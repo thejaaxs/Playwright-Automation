@@ -8,7 +8,7 @@ export class CheckboxesPage{
     }
 
     async open():Promise<void>{
-        await this.page.goto('https://the-internet.herokuapp.com/checkboxes');
+        await this.page.goto('https://the-internet.herokuapp.com/checkboxes',{waitUntil:'domcontentloaded'});
     }
 
     async checkFirstAndUncheckSecond():Promise<void>{
@@ -17,10 +17,10 @@ export class CheckboxesPage{
     }
 
     async isFirstChecked():Promise<boolean>{
-        return this.checkboxes.nth(0).isChecked();
+        return await this.checkboxes.nth(0).isChecked();
     }
 
     async isSecondUnchecked():Promise<boolean>{
-        return !this.checkboxes.nth(1).isChecked();
+        return !(await this.checkboxes.nth(1).isChecked());
     }
 }

@@ -1,17 +1,18 @@
-import { Before, After } from '@cucumber/cucumber';
+import { Before, After, setDefaultTimeout} from '@cucumber/cucumber';
 import { chromium } from 'playwright';
 import { CheckboxesPage } from '../pages/CheckboxesPage';
 import { TestWorld } from './world';
 
+setDefaultTimeout(15_000);
 
 Before(async function (this: TestWorld){
     this.browser = await chromium.launch({headless:true});
     this.page = await this.browser.newPage();
-    this.checkboxesPage = await new CheckboxesPage(this.page);
+    this.checkboxesPage = new CheckboxesPage(this.page);
 });
 
 
 After(async function (this: TestWorld){
     if(this.browser)
-        this.browser.close();
+        await this.browser.close();
 });

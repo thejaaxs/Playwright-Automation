@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cucumber-js src/features --require-module ts-node/register --require \"src/support/**/*.ts\" --require \"src/steps/**/*.ts\""
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,6 @@
     "@types/node": "^26.6.6",
     "playwright": "^1.65.0",
     "ts-node": "^10.9.2",
-    "typescript": "^7.0.2"
+    "typescript": "5.9.3"
   }
 }
