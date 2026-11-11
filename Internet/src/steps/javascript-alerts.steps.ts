@@ -17,7 +17,21 @@ When('I accept the Javascript alert', async function (this: TestWorld) {
     assertDialog(dialog, 'alert', 'I am a JS Alert');
 });
 
-Then('I should see the result "I am a JS Alert"', async function (this: TestWorld) {
+When('I accept the Javascript confirmation"', async function (this: TestWorld) {
     const dialog = await this.javascriptAlertPage.acceptConfirmation();
     assertDialog(dialog, 'confirm', 'I am a JS Confirm')
-})
+});
+
+When('I dismiss the Javascript confirmation', async function (this: TestWorld) {
+    const dialog = await this.javascriptAlertPage.dismissConfirmation();
+    assertDialog(dialog, 'confirm', 'I am a JS Confirm');
+});
+
+When('I submit {string} to the Javascript prompt', async function (this: TestWorld, value: string) {
+    const dialog = await this.javascriptAlertPage.submitPrompt(value);
+    assertDialog(dialog, 'prompt', 'I am a JS prompt');
+});
+
+Then('I should see the result {string}', async function (this: TestWorld, expectedResult: string) {
+    assert.equal(await this.javascriptAlertPage.getResultText(), expectedResult);
+});
