@@ -3,6 +3,8 @@ import { chromium } from 'playwright';
 import { CheckboxesPage } from '../pages/CheckboxesPage';
 import { TestWorld } from './world';
 import { JavascriptAlertPage } from '../pages/JavascriptAlertsPage';
+import { DropdownPage } from '../pages/DropdownPage';
+import { IframePage } from '../pages/iframePage';
 
 setDefaultTimeout(15_000);
 
@@ -11,6 +13,8 @@ Before(async function (this: TestWorld) {
     this.page = await this.browser.newPage();
     this.checkboxesPage = new CheckboxesPage(this.page);
     this.javascriptAlertPage = new JavascriptAlertPage(this.page);
+    this.dropDownPage = new DropdownPage(this.page);
+    this.iframePage = new IframePage(this.page);
 });
 
 

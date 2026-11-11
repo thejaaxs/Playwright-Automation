@@ -3,18 +3,18 @@ Feature: Javascript Alerts
   Background:
     Given I open the Javascript alerts page
 
-  Scenario: Accept a Javascript alert
+  Scenario Outline: Accept a Javascript alert
     When I accept the Javascript alert
-    Then I should see the result "I am a JS Alert"
+    Then I should see the result "You successfully clicked an alert"
 
-  Scenario: Accept a Javascript confirmation
+  Scenario Outline: Accept a Javascript confirmation
     When I accept the Javascript confirmation
     Then I should see the result "You clicked: Ok"
 
-  Scenario: Dismiss a Javascript confirmation
+  Scenario Outline: Dismiss a Javascript confirmation
     When I dismiss the Javascript confirmation
-    Then I should see the result "You clicked : Cancel"
+    Then I should see the result "You clicked: Cancel"
 
-  Scenario: Submit text to a Javascript prompt
+  Scenario Outline: Submit text to a Javascript prompt
     When I submit "Playwright prompt text" to the Javascript prompt
     Then I should see the result "You entered: Playwright prompt text"

@@ -2,7 +2,7 @@ import { Given, When, Then} from '@cucumber/cucumber';
 import assert from 'node:assert/strict';
 import { TestWorld } from '../support/world';
 
-Given('I Open the CheckBoxes Page', async function(this: TestWorld){
+Given('I open the CheckBoxes Page', async function(this: TestWorld){
     await this.checkboxesPage.open();
 });
 

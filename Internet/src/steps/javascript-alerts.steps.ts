@@ -17,7 +17,7 @@ When('I accept the Javascript alert', async function (this: TestWorld) {
     assertDialog(dialog, 'alert', 'I am a JS Alert');
 });
 
-When('I accept the Javascript confirmation"', async function (this: TestWorld) {
+When('I accept the Javascript confirmation', async function (this: TestWorld) {
     const dialog = await this.javascriptAlertPage.acceptConfirmation();
     assertDialog(dialog, 'confirm', 'I am a JS Confirm')
 });
