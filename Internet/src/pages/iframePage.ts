@@ -8,7 +8,7 @@ export class IframePage {
     }
 
     async open(): Promise<void> {
-        await this.page.goto('https://the-internet.herokuapp.com/iframe', { waitUntil: 'domcontentloaded' });
+        await this.page.goto('https://the-internet.herokuapp.com/iframe', { waitUntil: 'domcontentloaded', timeout: 10_000 });
     }
 
     async replaceEditorText(text: string): Promise<void> {

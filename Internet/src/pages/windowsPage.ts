@@ -6,16 +6,18 @@ export class WindowsPage {
     constructor(private readonly originalPage: Page) { }
 
     async open(): Promise<void> {
-        await this.originalPage.goto('https://the-internet.herokuapp.com/windows/', { waitUntil: 'domcontentloaded' });
+        const response = await this.originalPage.goto('https://the-internet.herokuapp.com/windows', { waitUntil: 'domcontentloaded' });
+        if (!response?.ok())
+            throw new Error(`Windows Page did not load successfully : HTTP ${response?.status()}`)
     }
     async openNewTab(): Promise<void> {
 
         // Listener
-        const newTabPromise = this.originalPage.context().waitForEvent('page',{timeout:10_000});
-        await this.originalPage.getByRole('link', { name: 'Click Here' }).click();
+        const newTabPromise = this.originalPage.context().waitForEvent('page', { timeout: 10_000 });
+        await this.originalPage.getByRole('link', { name: 'Click Here' }).click({ timeout: 5_000 });
 
         this.newTab = await newTabPromise;
-        await this.newTab.waitForLoadState('domcontentloaded')
+        await this.newTab.waitForLoadState('domcontentloaded', { timeout: 10_000 });
         // const [popup] = await Promise.all([
         //     this.originalPage.waitForEvent('popup'),
         //     this.originalPage.getByRole('link', { name: 'Click Here' }).click(),
