@@ -4,6 +4,7 @@ import { CheckboxesPage } from '../pages/CheckboxesPage';
 import { JavascriptAlertPage } from '../pages/JavascriptAlertsPage';
 import { DropdownPage } from '../pages/DropdownPage';
 import { IframePage } from '../pages/iframePage';
+import { WindowsPage } from '../pages/windowsPage';
 
 export class TestWorld extends World {
     browser!: Browser;
@@ -12,6 +13,7 @@ export class TestWorld extends World {
     javascriptAlertPage!: JavascriptAlertPage;
     dropDownPage!: DropdownPage;
     iframePage!: IframePage;
+    windowsPage!: WindowsPage;
 
     constructor(options: IWorldOptions) {
         super(options);

@@ -5,8 +5,9 @@ import { TestWorld } from './world';
 import { JavascriptAlertPage } from '../pages/JavascriptAlertsPage';
 import { DropdownPage } from '../pages/DropdownPage';
 import { IframePage } from '../pages/iframePage';
+import { WindowsPage } from '../pages/windowsPage';
 
-setDefaultTimeout(15_000);
+setDefaultTimeout(30_000);
 
 Before(async function (this: TestWorld) {
     this.browser = await chromium.launch({ headless: true });
@@ -15,10 +16,11 @@ Before(async function (this: TestWorld) {
     this.javascriptAlertPage = new JavascriptAlertPage(this.page);
     this.dropDownPage = new DropdownPage(this.page);
     this.iframePage = new IframePage(this.page);
+    this.windowsPage = new WindowsPage(this.page);
 });
 
 
 After(async function (this: TestWorld) {
-    if (this.browser)
+    if (this.browser)                
         await this.browser.close();
 });

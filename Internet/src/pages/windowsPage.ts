@@ -9,12 +9,20 @@ export class WindowsPage {
         await this.originalPage.goto('https://the-internet.herokuapp.com/windows/', { waitUntil: 'domcontentloaded' });
     }
     async openNewTab(): Promise<void> {
+
         // Listener
-        const newTabPromise = this.originalPage.context().waitForEvent('page');
+        const newTabPromise = this.originalPage.context().waitForEvent('page',{timeout:10_000});
         await this.originalPage.getByRole('link', { name: 'Click Here' }).click();
 
         this.newTab = await newTabPromise;
         await this.newTab.waitForLoadState('domcontentloaded')
+        // const [popup] = await Promise.all([
+        //     this.originalPage.waitForEvent('popup'),
+        //     this.originalPage.getByRole('link', { name: 'Click Here' }).click(),
+        // ]);
+
+        // this.newTab = popup;
+        // await this.newTab.waitForLoadState('domcontentloaded');
     }
     async getNewTabUrl(): Promise<string> {
         return this.getNewTab().url();
@@ -31,4 +39,4 @@ export class WindowsPage {
             throw new Error('The New Tab has not been open yet');
         return this.newTab;
     }
-}
+} 
