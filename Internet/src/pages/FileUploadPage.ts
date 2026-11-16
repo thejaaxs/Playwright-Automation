@@ -19,4 +19,8 @@ export class FileUploadPage {
         await this.fileInput.setInputFiles(filePath);
         await this.uploadButton.click();
     }
+
+    async getUploadedFilename(): Promise<string> {
+        return this.uploadedFilename.innerText();
+    }
 }

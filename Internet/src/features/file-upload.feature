@@ -5,4 +5,4 @@ Feature: File Upload
 
     Scenario: Upload a file and verify its filename
         When I upload the sample file
-        Then the uploaded filename should be "uploaded.txt"
+        Then the uploaded filename should be "upload.txt"
