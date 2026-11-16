@@ -6,6 +6,7 @@ import { JavascriptAlertPage } from '../pages/JavascriptAlertsPage';
 import { DropdownPage } from '../pages/DropdownPage';
 import { IframePage } from '../pages/iframePage';
 import { WindowsPage } from '../pages/windowsPage';
+import { FileUploadPage } from '../pages/FileUploadPage';
 
 setDefaultTimeout(30_000);
 
@@ -17,10 +18,11 @@ Before(async function (this: TestWorld) {
     this.dropDownPage = new DropdownPage(this.page);
     this.iframePage = new IframePage(this.page);
     this.windowsPage = new WindowsPage(this.page);
+    this.fileUpload = new FileUploadPage(this.page)
 });
 
 
 After(async function (this: TestWorld) {
-    if (this.browser)                
+    if (this.browser)
         await this.browser.close();
 });

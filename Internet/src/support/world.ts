@@ -5,6 +5,7 @@ import { JavascriptAlertPage } from '../pages/JavascriptAlertsPage';
 import { DropdownPage } from '../pages/DropdownPage';
 import { IframePage } from '../pages/iframePage';
 import { WindowsPage } from '../pages/windowsPage';
+import { FileUploadPage } from '../pages/FileUploadPage';
 
 export class TestWorld extends World {
     browser!: Browser;
@@ -14,6 +15,7 @@ export class TestWorld extends World {
     dropDownPage!: DropdownPage;
     iframePage!: IframePage;
     windowsPage!: WindowsPage;
+    fileUpload!: FileUploadPage;
 
     constructor(options: IWorldOptions) {
         super(options);
