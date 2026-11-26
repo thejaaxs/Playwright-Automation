@@ -38,7 +38,7 @@ test('Login Page Practice', async ({ page }) => {
     await expect(page.locator('[style*="block"]')).toContainText('Incorrect');
 });
 
-test.only('Browser Login Successfully', async ({ page }) => {
+test('Browser Login Successfully', async ({ page }) => {
     const userName = page.locator('input#username');
     const password = page.locator("[type*='password']");
     const signInBtn = page.locator('input#signInBtn');
@@ -55,5 +55,4 @@ test.only('Browser Login Successfully', async ({ page }) => {
     const items = await cardItems.allTextContents();
     // allTextContents does not have the auto-wait capability !
     console.log(items);
-
 });
