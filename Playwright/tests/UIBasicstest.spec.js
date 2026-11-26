@@ -78,7 +78,7 @@ test('UI Controls', async ({ page }) => {
     await signBtn.click();
 });
 
-test.only('Child Windows Handling', async ({ browser }) => {
+test('Child Windows Handling', async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     const documentLink = page.locator("[href*='documents-request']");
