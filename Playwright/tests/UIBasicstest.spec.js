@@ -84,8 +84,18 @@ test.only('Child Windows Handling', async ({ browser }) => {
     const documentLink = page.locator("[href*='documents-request']");
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     // Parallel Execution 
-    const [newPage] = Promise.all(
-        [context.waitForEvent('page'),
-        documentLink.click()]
+    const [newPage, newPage2, newPage3] = await Promise.all(
+        [
+            context.waitForEvent('page'),
+            documentLink.click()
+        ]
     ); // newPage can be accessed !
+    const text = await newPage.locator('p.red').textContent();
+
+    const arrayText = text.split('@')[1];
+    const domainName = arrayText.split(' ')[0];
+    console.log(domainName);
+
+    await page.locator('input#username').type(domainName);
+    console.log(await page.locator('input#username').inputValue());
 });
