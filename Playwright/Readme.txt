@@ -21,3 +21,10 @@ Language Used : Javascript + Typescript
 Playwright test runner is playwright.config.js file !
 package.json - default for node project 
 node modules - contains all the jars needed for our Playwright Project !
+
+testDir: './tests', - to run the test ( in the playwright config)
+
+Ways to write the locators 
+If ID is present then => tagName#ID or #ID
+If CLASS Attribute is present , then => tagName.CLASS or .CLASS
+By Using Only Attributes -> [attribute='value']
