@@ -28,3 +28,5 @@ Ways to write the locators
 If ID is present then => tagName#ID or #ID
 If CLASS Attribute is present , then => tagName.CLASS or .CLASS
 By Using Only Attributes -> [attribute='value']
+
+await is needed for the actual action

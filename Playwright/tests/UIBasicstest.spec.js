@@ -1,10 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 test('Always give your title', async function () {
-
     // Playwright Codes should be written
     // Since Javascript is asynchronous - use async, await wisely
-
 });
 
 // Browser, Page are the Playwright Fixtures !
@@ -55,4 +53,39 @@ test('Browser Login Successfully', async ({ page }) => {
     const items = await cardItems.allTextContents();
     // allTextContents does not have the auto-wait capability !
     console.log(items);
+});
+
+test('UI Controls', async ({ page }) => {
+    const userName = page.locator('input#username');
+    const password = page.locator("[type*='password']");
+    const dropdown = page.locator('select.form-control');
+    const signBtn = page.locator('input#signInBtn');
+    const documentLink = page.locator("[href*='documents-request']");
+
+    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+    await userName.fill('rahulshettyacademy')
+    await password.fill('Learning@830$3mK2');
+    await dropdown.selectOption('Consultant');
+    await page.locator("[name*='radio']").last().click();
+    expect(await page.locator("[name*='radio']").last()).toBeChecked();
+    await page.locator('button#okayBtn').click();
+    await page.locator("[name*='terms']").click();
+    expect(await page.locator("[name*='terms']")).toBeChecked();
+    await page.waitForLoadState('domcontentloaded');
+    // await page.locator('#terms').uncheck();
+    // expect(await page.locator('#terms').isChecked.toBeFalsy());
+    await expect(documentLink).toHaveAttribute('class', 'blinkingText');
+    await signBtn.click();
+});
+
+test.only('Child Windows Handling', async ({ browser }) => {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    const documentLink = page.locator("[href*='documents-request']");
+    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+    // Parallel Execution 
+    const [newPage] = Promise.all(
+        [context.waitForEvent('page'),
+        documentLink.click()]
+    ); // newPage can be accessed !
 });
