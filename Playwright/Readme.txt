@@ -32,3 +32,4 @@ By Using Only Attributes -> [attribute='value']
 await is needed for the actual action
 Unless it is select or options to choose, you can use the getByLabel 
 npx playwright test --ui
+For global timeout , change in the playwright.config.js file 

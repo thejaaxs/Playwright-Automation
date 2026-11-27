@@ -106,8 +106,12 @@ const config = {
   use: {
     browserName: 'chromium',
     // browserName:'firefox',
-    headless: false, // to view the browser 
+    actionTimeout: 10 * 1000,
+    navigationTimeout: 30 * 1000,
+    screenshot: 'on'
   },
+  // to view the browser 
+  headless: false,
   timeout: 40 * 1000,
   expect: {
     timeout: 40 * 1000
