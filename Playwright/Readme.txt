@@ -30,3 +30,5 @@ If CLASS Attribute is present , then => tagName.CLASS or .CLASS
 By Using Only Attributes -> [attribute='value']
 
 await is needed for the actual action
+Unless it is select or options to choose, you can use the getByLabel 
+npx playwright test --ui
