@@ -33,6 +33,7 @@ test.only('Client App Login', async ({ page }) => {
 
     // await page.waitForLoadState('domcontentloaded');
     // Or use the waitFor for the div or tag of that items
+
     await page.locator('div li').first().waitFor();
 
     const bool = await page.locator('h3:has-text("ZARA COAT 3")').isVisible();
