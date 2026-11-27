@@ -57,5 +57,23 @@ test.only('Client App Login', async ({ page }) => {
     await page.locator('input[type="text"]').nth(1).fill('2026')
     await page.locator('input[type="text"]').nth(2).fill('Rahul Shetty');
     await page.locator('.actions .action__submit:has-text("Place Order ")').click();
-});
+    await expect(page.locator('.hero-primary')).toHaveText(' Thankyou for the order. ');
+    const orderId = await page.locator('tr.ng-star-inserted .em-spacer-1').textContent();
+    console.log(orderId);
 
+    // Assignment 
+    await page.locator('button[routerLink*="/dashboard/myorders"]').click();
+    await page.locator('tbody').waitFor();
+    const rows = page.locator('tbody tr');
+
+    for (let i = 0; i < rows.count(); i++) {
+        const rowOrderId = await rows.nth(i).locator('th').textContent();
+        if (orderId.includes(rowOrderId)) {
+            await rows.nth(i).locator('button:has-text("View")').click();
+            break;
+        }
+        await expect(page.locator('p.tagline')).toHaveText('Thank you for Shopping With Us');
+        const orderIdDetails = await page.locator('div.col-text').textContent();
+        await expect(orderIdDetails.includes(orderId)).toBeTruthy();
+    }
+});
