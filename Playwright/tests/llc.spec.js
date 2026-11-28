@@ -25,7 +25,7 @@ test('Playwright Special Locators', async ({ page }) => {
 test('Playwright Test Level Timeout', async ({ page }) => {
 
     // Overrides >> global level 
-    page.setDefaultTimeout(9000);
+    // page.setDefaultTimeout(9000);
 
     // Test Level Timeout
     test.setTimeout(60000);
@@ -42,9 +42,9 @@ test('Playwright Test Level Timeout', async ({ page }) => {
     await page.getByText(' The Form has been submitted successfully!.').isVisible();
     // Step Level Assertions timeout increase
     await softExpect(page.getByText(' The Form has been submitted successfully!.')).toBeVisible({ timeout: 10_000 });
-    await page.getByRole('link', { name: 'Shop' }).click({ timeout: 15 * 1000 });
+    await page.getByRole('link', { name: 'Shop' }).click();
     // It will take some time 
-    softExpect(page.locator('.my-4')).toHaveText('Shop Name')
+    await softExpect(page.locator('h1.my-4')).toHaveText('Shop Name')
 
     // Use all the above and make sure that you use the NOKIA EDGE mobile
     await page.locator('app-card').filter({ hasText: 'Nokia Edge' }).getByRole('button', { name: 'Add ' }).click();

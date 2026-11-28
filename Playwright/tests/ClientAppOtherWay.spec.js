@@ -37,6 +37,7 @@ test('test', async ({ page }) => {
     await page.getByText('I agree with the term &').click();
     await page.getByRole('textbox', { name: 'Please choose your delivery' }).fill('Manchapuram');
     await page.getByRole('checkbox', { name: 'I agree with the term &' }).check();
+    await page.getByText('Close').click();
     await page.locator('input[value="Purchase"]').click();
     await expect(page.locator('app-checkout')).toContainText('× Success! Thank you! Your order will be delivered in next few weeks :-).');
 });
