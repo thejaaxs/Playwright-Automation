@@ -108,7 +108,8 @@ const config = {
     // browserName:'firefox',
     actionTimeout: 10 * 1000,
     navigationTimeout: 30 * 1000,
-    screenshot: 'on'
+    screenshot: 'on',
+    trace:'on',
   },
   // to view the browser 
   headless: false,
